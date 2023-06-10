@@ -7,4 +7,4 @@ FROM openjdk:17-jdk-slim
 WORKDIR /app
 COPY --from=build /app/target/swagger-spring-1.0.0.jar .
 EXPOSE 8080
-CMD ["java", "-jar", "my-application.jar"]
+CMD ["java", "-jar", "swagger-spring-1.0.0.jar"]
