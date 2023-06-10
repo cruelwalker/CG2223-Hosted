@@ -3,7 +3,7 @@ FROM node:14.17.0-alpine as frontend-build
 WORKDIR /app/src
 COPY frontend/package*.json ./
 RUN npm ci
-COPY app/src/frontend .
+COPY src/frontend .
 RUN npm run build
 
 # Build stage for Spring Boot back-end
