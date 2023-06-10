@@ -1,7 +1,10 @@
-FROM ubuntu:latest AS build
-RUN apt-get update
-RUN apt-get install openjdk-17-jdk -y
+FROM maven:3.8.3-openjdk-17-slim AS build
+WORKDIR /app
 COPY . .
-RUN ./mvnw clean install -U
+RUN mvn clean install -U
+
+FROM openjdk:17-jdk-slim
+WORKDIR /app
+COPY --from=build /app/target/swagger-spring-1.0.0.jar .
 EXPOSE 8080
-ENTRYPOINT [”./mvnw”,”spring-boot:run”]
+CMD ["java", "-jar", "my-application.jar"]
