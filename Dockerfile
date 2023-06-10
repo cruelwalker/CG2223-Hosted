@@ -1,7 +1,7 @@
 # Build stage for Vue front-end
 FROM node:14.17.0-alpine as frontend-build
-WORKDIR /app/src
-COPY frontend/package*.json ./
+WORKDIR /app
+COPY src/frontend/package*.json ./
 RUN npm ci
 COPY src/frontend .
 RUN npm run build
