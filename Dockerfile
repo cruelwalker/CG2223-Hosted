@@ -9,7 +9,7 @@ RUN npm run build
 # Build stage for Spring Boot back-end
 FROM maven:3.8.3-openjdk-17-slim as backend-build
 WORKDIR /backend
-COPY pom.xml ./
+COPY /pom.xml ./
 RUN mvn dependency:go-offline
 COPY backend/src ./src
 RUN mvn package -DskipTests
