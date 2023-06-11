@@ -11,7 +11,7 @@ FROM maven:3.8.3-openjdk-17-slim as backend-build
 WORKDIR /backend
 COPY backend/pom.xml ./
 RUN mvn dependency:go-offline
-COPY src ./src
+COPY backend/src ./src
 RUN mvn package -DskipTests
 
 
