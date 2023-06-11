@@ -18,7 +18,7 @@ COPY backend/src ./src
 
 # Final image with combined front-end and back-end
 FROM openjdk:17-jdk-slim
-WORKDIR /app
+WORKDIR /
 COPY --from=frontend-build /frontend/dist ./frontend/dist
 COPY --from=backend-build /backend/target/swagger-spring-1.0.0.jar .
 EXPOSE 8080
