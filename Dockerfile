@@ -20,6 +20,6 @@ RUN mvn package -DskipTests
 FROM openjdk:17-jdk-slim
 WORKDIR /
 COPY frontend/dist app/dist
-COPY backend/target/swagger-spring-1.0.0.jar .
+COPY --from=backend-build backend/target/swagger-spring-1.0.0.jar .
 EXPOSE 8080
 CMD ["java", "-jar", "swagger-spring-1.0.0.jar"]
