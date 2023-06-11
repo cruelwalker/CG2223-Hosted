@@ -20,6 +20,6 @@ COPY backend/src ./src
 FROM openjdk:17-jdk-slim
 WORKDIR /app
 COPY --from=frontend-build /frontend/dist ./frontend/dist
-COPY --from=backend-build backend/target/swagger-spring-1.0.0.jar .
+COPY --from=backend-build /backend/target/swagger-spring-1.0.0.jar .
 EXPOSE 8080
 CMD ["java", "-jar", "swagger-spring-1.0.0.jar"]
